@@ -1,10 +1,13 @@
 package alura.com.br.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.Serializable;
 
 import alura.com.br.R;
 import alura.com.br.dao.AlunoDAO;
@@ -27,6 +30,15 @@ public class FormularioAlunoActivity extends AppCompatActivity {
 
         inicializacaoDosCampos();
         configuraBotaoSalvar();
+
+        Intent dados = getIntent();
+        Aluno aluno = (Aluno) dados.getSerializableExtra("aluno");
+
+        if(aluno != null) {
+            campoNome.setText(aluno.getNome());
+            campoTelefone.setText(aluno.getTelefone());
+            campoEmail.setText(aluno.getEmail());
+        }
     }
 
     private void configuraBotaoSalvar() {

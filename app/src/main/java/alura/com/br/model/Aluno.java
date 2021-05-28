@@ -1,6 +1,8 @@
 package alura.com.br.model;
 
-public class Aluno {
+import java.io.Serializable;
+
+public class Aluno implements Serializable {
     private String nome;
     private String telefone;
     private String email;
@@ -14,5 +16,17 @@ public class Aluno {
     @Override
     public String toString() {
         return nome;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }
