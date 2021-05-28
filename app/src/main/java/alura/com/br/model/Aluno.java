@@ -3,6 +3,7 @@ package alura.com.br.model;
 import java.io.Serializable;
 
 public class Aluno implements Serializable {
+    private int id = 0;
     private String nome;
     private String telefone;
     private String email;
@@ -11,6 +12,10 @@ public class Aluno implements Serializable {
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
+    }
+
+    public Aluno() {
+
     }
 
     @Override
@@ -28,5 +33,29 @@ public class Aluno implements Serializable {
 
     public String getEmail() {
         return email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public boolean temIdValido() {
+        return id > 0;
     }
 }

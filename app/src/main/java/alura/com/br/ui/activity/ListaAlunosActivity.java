@@ -31,6 +31,12 @@ public class ListaAlunosActivity extends AppCompatActivity {
         setTitle(TITULO_APPBAR);
 
         configuraFabNovoAluno();
+
+        Aluno alex = new Aluno("alex", "123456", "alex@gmail.com");
+        Aluno fran = new Aluno("Fran", "1234567", "fran@gmail.com");
+
+        dao.salva(alex);
+        dao.salva(fran);
     }
 
     private void configuraFabNovoAluno() {
