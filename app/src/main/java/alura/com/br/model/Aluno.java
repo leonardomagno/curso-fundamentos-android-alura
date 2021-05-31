@@ -20,7 +20,7 @@ public class Aluno implements Serializable {
 
     @Override
     public String toString() {
-        return nome;
+        return nome + "-" + telefone;
     }
 
     public String getNome() {
