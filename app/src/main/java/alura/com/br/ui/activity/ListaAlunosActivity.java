@@ -38,11 +38,11 @@ public class ListaAlunosActivity extends AppCompatActivity {
 
         configuraFabNovoAluno();
         configuraLista();
-
         Aluno alex = new Aluno("alex", "123456", "alex@gmail.com");
         Aluno fran = new Aluno("Fran", "1234567", "fran@gmail.com");
         dao.salva(alex);
         dao.salva(fran);
+
     }
 
     @Override
@@ -54,7 +54,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         int itemId = item.getItemId();
-        if (itemId == R.id.activity_lista_menu_remover){
+        if (itemId == R.id.activity_lista_menu_remover) {
             AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
             Aluno alunoEscolhido = adapter.getItem(menuInfo.position);
             remove(alunoEscolhido);
