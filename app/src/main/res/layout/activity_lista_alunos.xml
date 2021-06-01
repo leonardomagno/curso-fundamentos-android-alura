@@ -19,7 +19,7 @@
         android:clickable="true"
         android:focusable="true"
         android:src="@drawable/ic_action_novo_aluno"
-        />
+        android:contentDescription="TODO" />
 
 
 </RelativeLayout>
