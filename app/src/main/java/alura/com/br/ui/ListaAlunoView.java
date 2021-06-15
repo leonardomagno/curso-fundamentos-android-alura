@@ -7,7 +7,8 @@ import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import alura.com.br.dao.AlunoDAO;
+import alura.com.br.database.AgendaDatabase;
+import alura.com.br.database.dao.AlunoDAO;
 import alura.com.br.model.Aluno;
 import alura.com.br.ui.adapter.ListaAlunosAdapter;
 
@@ -20,7 +21,8 @@ public class ListaAlunoView {
     public ListaAlunoView(Context context) {
         this.context = context;
         this.adapter = new ListaAlunosAdapter(this.context);
-        this.dao = new AlunoDAO();
+        dao = AgendaDatabase.getInstance(context)
+                .getRoomAlunoDAO();
     }
 
     public void confirmaRemocao(final MenuItem item) {

@@ -22,7 +22,7 @@ import static alura.com.br.ui.activity.ConstantsActivities.CHAVE_ALUNO;
 public class ListaAlunosActivity extends AppCompatActivity {
 
     public static final String TITULO_APPBAR = "Lista de Alunos";
-    private ListaAlunoView listaAlunoView = new ListaAlunoView(this);
+    private ListaAlunoView listaAlunoView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,6 +30,7 @@ public class ListaAlunosActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lista_alunos);
         setTitle(TITULO_APPBAR);
 
+        listaAlunoView = new ListaAlunoView(this);
         configuraFabNovoAluno();
         configuraLista();
 

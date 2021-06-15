@@ -10,7 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import alura.com.br.R;
-import alura.com.br.dao.AlunoDAO;
+import alura.com.br.database.AgendaDatabase;
+import alura.com.br.database.dao.AlunoDAO;
 import alura.com.br.model.Aluno;
 
 import static alura.com.br.ui.activity.ConstantsActivities.CHAVE_ALUNO;
@@ -22,7 +23,7 @@ public class FormularioAlunoActivity extends AppCompatActivity {
     private EditText campoNome;
     private EditText campoTelefone;
     private EditText campoEmail;
-    private final AlunoDAO dao = new AlunoDAO();
+    private AlunoDAO dao;
     private Aluno aluno;
 
 
@@ -31,6 +32,8 @@ public class FormularioAlunoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario_aluno);
 
+        AgendaDatabase database = AgendaDatabase.getInstance(this);
+        dao = database.getRoomAlunoDAO();
         inicializacaoDosCampos();
         carregaAluno();
     }
