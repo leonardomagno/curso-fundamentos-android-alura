@@ -11,13 +11,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import alura.com.br.R;
+import alura.com.br.database.AgendaDatabase;
+import alura.com.br.database.dao.TelefoneDAO;
 import alura.com.br.model.Aluno;
+import alura.com.br.model.Telefone;
 
 public class ListaAlunosAdapter extends BaseAdapter {
     private final List<Aluno> alunos = new ArrayList<>();
     private final Context context;
+    private final TelefoneDAO dao;
 
-    public ListaAlunosAdapter(Context context) { this.context = context; }
+    public ListaAlunosAdapter(Context context) {
+        this.context = context;
+        dao = AgendaDatabase.getInstance(context).getTelefoneDAO();
+    }
 
     @Override
     public int getCount() { return alunos.size(); }
@@ -40,7 +47,8 @@ public class ListaAlunosAdapter extends BaseAdapter {
         TextView nome = view.findViewById(R.id.item_aluno_nome);
         nome.setText(aluno.getNome() + " " + aluno.dataFormatada());
         TextView telefone = view.findViewById(R.id.item_aluno_telefone);
-        telefone.setText(aluno.getTelefone());
+        Telefone primeiroTelefone = dao.buscaPrimeiroTelefoneDoAluno(aluno.getId());
+        telefone.setText(primeiroTelefone.getNumero());
     }
 
     private View criaView(ViewGroup parent) {
