@@ -48,7 +48,9 @@ public class ListaAlunosAdapter extends BaseAdapter {
         nome.setText(aluno.getNome() + " " + aluno.dataFormatada());
         TextView telefone = view.findViewById(R.id.item_aluno_telefone);
         Telefone primeiroTelefone = dao.buscaPrimeiroTelefoneDoAluno(aluno.getId());
-        telefone.setText(primeiroTelefone.getNumero());
+        if (primeiroTelefone != null) {
+            telefone.setText(primeiroTelefone.getNumero());
+        }
     }
 
     private View criaView(ViewGroup parent) {

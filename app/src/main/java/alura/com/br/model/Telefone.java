@@ -21,6 +21,11 @@ public class Telefone {
     private TipoTelefone tipo;
     private int alunoId;
 
+    public Telefone(String numero, TipoTelefone tipo) {
+        this.numero = numero;
+        this.tipo = tipo;
+    }
+
     public int getAlunoId() {
         return alunoId;
     }
