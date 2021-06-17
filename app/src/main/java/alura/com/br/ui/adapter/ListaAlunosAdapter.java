@@ -11,10 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import alura.com.br.R;
+import alura.com.br.asynctask.BuscaPrimeiroTelefoneDoAlunoTask;
 import alura.com.br.database.AgendaDatabase;
 import alura.com.br.database.dao.TelefoneDAO;
 import alura.com.br.model.Aluno;
-import alura.com.br.model.Telefone;
 
 public class ListaAlunosAdapter extends BaseAdapter {
     private final List<Aluno> alunos = new ArrayList<>();
@@ -47,10 +47,8 @@ public class ListaAlunosAdapter extends BaseAdapter {
         TextView nome = view.findViewById(R.id.item_aluno_nome);
         nome.setText(aluno.getNome() + " " + aluno.dataFormatada());
         TextView telefone = view.findViewById(R.id.item_aluno_telefone);
-        Telefone primeiroTelefone = dao.buscaPrimeiroTelefoneDoAluno(aluno.getId());
-        if (primeiroTelefone != null) {
-            telefone.setText(primeiroTelefone.getNumero());
-        }
+        new BuscaPrimeiroTelefoneDoAlunoTask(dao, aluno.getId(), telefoneEncontrado ->
+                telefone.setText(telefoneEncontrado.getNumero())).execute();
     }
 
     private View criaView(ViewGroup parent) {
